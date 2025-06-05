@@ -21,3 +21,7 @@ h1 {
 p {
     font-size: 1.2em;
 }
+header div {
+    display: flex;
+    gap: 20px; /* Adjust the value as needed */
+}

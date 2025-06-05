@@ -1,5 +1,6 @@
 let productsHTML = '';
-const products = [{
+const products = [
+  {
   image:"Images/browniesWithNuts.jpg",
   name: "براونيز بالمكسرات",
   price: 15.00,
@@ -98,11 +99,11 @@ products.forEach((product) => {
       <img src="${product.image}" alt="${product.name}">
       <h3>${product.name}</h3>
       <p>${product.description}</p>
-      <span class="price">${product.price.toFixed(2)} ر.س</span>
+      <span class="price">${product.price.toFixed(2)} ر.ع</span>
       <button class="add-to-cart" data-id="${product.id}">أضف إلى السلة</button>
     </div>
   `;
   
 });
 
-document.querySelector('.js-prodcuts-grid').innerHTML = productsHTML;
+document.querySelector('.js-products-grid').innerHTML = productsHTML;
