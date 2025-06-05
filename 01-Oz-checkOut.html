@@ -3,28 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check out</title>    
+    <title>Check out</title>
     <link rel="stylesheet"  href="Styles/01-Oz-about.css">
+
+    <!-- Here are the CSS files for this page. -->
+    <link rel="stylesheet" href="Styles/shared/general.css">
+    <link rel="stylesheet" href="Styles/shared/Ozden-header.css">
+    <link rel="stylesheet" href="Styles/pages/productListings.css">
+    <link rel="stylesheet" href="Styles/pages/checkout/checkout-header.css">
+    <link rel="stylesheet" href="Styles/pages/checkout/checkout.css">
 </head>
 <body>
-    <header>
-    <div>
-        <a rel="home page"  href="01-Oz-home.html">الرئيسية</a>
-            <a rel="products listings" href="01-Oz-productListings.html">المنتجات</a>
-            <a rel="Admin panel" href="01-Oz-AdminPanel.html">الادارة</a>
-            <a rel="check out" href="01-Oz-checkOut.html">عربة المشتريات</a>
+    <div class="Ozden-header">
+        <div class="Ozden-header-right-section">
+            <a href="home.html" class="header-link">
+                <img class="Ozden-logo"
+                src="images/icons/Ozdenlogo.png" alt="Ozden logo">
+            </a>
+        </div>
+
+        <div class="Ozden-header-middle-section">
+            <input class="search-bar" type="text" placeholder="Search">
+            <button class="search-button" title="بحث" aria-label="بحث">
+                <img class="search-icon" src="images/icons/search-icon.png" alt="بحث">
+            </button>
+        </div>
+
+        <div class="Ozden-header-left-section">
+            <a class="orders-link header-link" href="orders.html">
+                <span class="returns-text">Returns</span>
+                <span class="orders-text">& Orders</span>
+            </a>
+            <a class="cart-link header-link" href="checkout.html">
+                <img class="cart-icon" src="images/icons/cart-icon.png" alt="Cart Icon">
+                <div class="cart-quantity">3</div>
+                <div class="cart-text">Cart</div>
+            </a>
+        </div>
     </div>
-</header>
-    <p>
+    <header>
+        <div>
+            <a rel="home page"  href="01-Oz-home.html">الرئيسية</a>
+                <a rel="products listings" href="01-Oz-productListings.html">المنتجات</a>
+                <a rel="Admin panel" href="01-Oz-AdminPanel.html">الادارة</a>
+                <a rel="check out" href="01-Oz-checkOut.html">عربة المشتريات</a>
+        </div>
+    </header>
+    <main>
         <h1>Check out</h1>
         <p>Thank you for choosing Ozden Sweets! Your order has been successfully placed.</p>
         <p>We will process your order and notify you once it is ready for delivery or pickup.</p>
-    </p>
-
-
-
-  <script>
-    
-  </script>
+    </main>
+    <script></script>
 </body>
-</html>!
+</html>

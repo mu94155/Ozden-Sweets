@@ -1,0 +1,8 @@
+/* Make product images smaller and consistent */
+.product img {
+  width: 150px;    /* Adjust width as needed */
+  height: auto;    /* Keeps aspect ratio */
+  display: block;
+  margin: 0 auto;  /* Center the image */
+  border-radius: 8px; /* Optional: rounded corners */
+}

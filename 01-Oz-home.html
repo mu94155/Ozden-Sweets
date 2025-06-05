@@ -5,21 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Ozden Sweets home page</title>
     <link rel="stylesheet"  href="Styles/01-Oz-about.css">
+
+    <!-- Here are the CSS files for this page. -->
+    <link rel="stylesheet" href="Styles/shared/general.css">
+    <link rel="stylesheet" href="Styles/shared/Ozden-header.css">
+    <link rel="stylesheet" href="Styles/pages/productListings.css">
+    <link rel="stylesheet" href="Styles/pages/checkout/checkout-header.css">
+    <link rel="stylesheet" href="Styles/pages/checkout/checkout.css">
 </head>
 <body>
-<header>
-    <div>
+    <div class="Ozden-header">
+        <div class="Ozden-header-right-section">
+            <a href="home.html" class="header-link">
+                <img class="Ozden-logo"
+                src="images/icons/Ozdenlogo.png" alt="Ozden logo">
+            </a>
+        </div>
+
+        <div class="Ozden-header-middle-section">
+            <input class="search-bar" type="text" placeholder="Search">
+            <button class="search-button" title="بحث" aria-label="بحث">
+                <img class="search-icon" src="images/icons/search-icon.png" alt="بحث">
+            </button>
+        </div>
+
+        <div class="Ozden-header-left-section">
+            <a class="orders-link header-link" href="orders.html">
+                <span class="returns-text">Returns</span>
+                <span class="orders-text">& Orders</span>
+            </a>
+            <a class="cart-link header-link" href="checkout.html">
+                <img class="cart-icon" src="images/icons/cart-icon.png" alt="Cart Icon">
+                <div class="cart-quantity">3</div>
+                <div class="cart-text">Cart</div>
+            </a>
+        </div>
+    </div>
+    <header>
+        <div>
         <a rel="home page"  href="01-Oz-home.html">الرئيسية</a>
             <a rel="products listings" href="01-Oz-productListings.html">المنتجات</a>
             <a rel="Admin panel" href="01-Oz-AdminPanel.html">الادارة</a>
             <a rel="check out" href="01-Oz-checkOut.html">عربة المشتريات</a>
-    </div>
-</header>
-    <h1>Home</h1>
-    <p>Welcome to Ozden Sweets! We are delighted to have you here.</p>
-
-<script>
+        </div>
+    </header>
+    <main>
+        <h1>Home</h1>
+        <p>Welcome to Ozden Sweets! We are delighted to have you here.</p>
+    </main>
     
-</script>
+
+    <script></script>
 </body>
-</html>!
+</html>

@@ -1,7 +1,7 @@
 let productsHTML = '';
 const products = [
   {
-  image:"Images/browniesWithNuts.jpg",
+  image:"Images/browniesWithNuts2.jpg",
   name: "براونيز بالمكسرات",
   price: 15.00,
   description: "براونيز لذيذ مع قطع المكسرات المقرمشة.",
