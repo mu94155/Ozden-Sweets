@@ -22,13 +22,6 @@
   </head>
   <body>
     <div class="Ozden-header">
-        <div class="Ozden-header-right-section">
-            <a href="home.html" class="header-link">
-                <img class="Ozden-logo"
-                src="images/icons/Ozdenlogo.png" alt="Ozden logo">
-            </a>
-        </div>
-
         <div class="Ozden-header-middle-section">
             <input class="search-bar" type="text" placeholder="Search">
             <button class="search-button" title="بحث" aria-label="بحث">
@@ -41,7 +34,7 @@
                 <span class="returns-text">Returns</span>
                 <span class="orders-text">& Orders</span>
             </a>
-            <a class="cart-link header-link" href="checkout.html">
+            <a class="cart-link header-link" href="01-Oz-checkOut.html">
                 <img class="cart-icon" src="images/icons/cart-icon.png" alt="Cart Icon">
                 <div class="cart-quantity">3</div>
                 <div class="cart-text">Cart</div>
