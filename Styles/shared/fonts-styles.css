@@ -2,7 +2,7 @@ html {
   /* px means "pixels". The base font size is now 10 pixels high */
   font-size: 20px;
   /* Replace PLACEHOLDER with the font-family property value you got from Google Fonts */
-  font-family: "Roboto", sans-serif;;
+  font-family: "Almarai", sans-serif;
 }
 
 .almarai-light {
@@ -38,5 +38,5 @@ body {
 }
 
 a {
-  padding: 10px;
+  padding: 50px;
 }
