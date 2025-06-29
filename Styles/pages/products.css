@@ -1,0 +1,156 @@
+/* Product grid container */
+.products-grid,
+.js-products-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  padding: 32px;
+  background: #fff;
+}
+
+/* Responsive grid columns */
+@media (max-width: 1600px) {
+  .products-grid,
+  .js-products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 1200px) {
+  .products-grid,
+  .js-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .products-grid,
+  .js-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .products-grid,
+  .js-products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Product card styling */
+.product-container {
+  background: #faf9f6;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 24px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+
+.product-container:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* Product image */
+.product-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.product-image {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+/* Product name */
+.product-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #3a2e13;
+}
+
+/* Product rating */
+.product-rating-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.product-rating-stars {
+  height: 22px;
+}
+
+.product-rating-count {
+  font-size: 1rem;
+  color: #8b6e2e;
+}
+
+/* Product price */
+.product-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2e8b57;
+  margin-bottom: 10px;
+}
+
+/* Quantity selector */
+.product-quantity-container {
+  margin-bottom: 10px;
+}
+
+.product-quantity-container select {
+  padding: 4px 8px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Spacer for layout */
+.product-spacer {
+  flex: 1;
+}
+
+/* Added to cart badge */
+.added-to-cart {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  color: #2e8b57;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.added-to-cart img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Add to cart button */
+.add-to-cart-button.button-primary {
+  background: #8b6e2e;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-to-cart-button.button-primary:hover {
+  background: #a88c4a;}
+
+  .product-attribute {
+  margin-bottom: 6px;
+  font-size: 1rem;
+}

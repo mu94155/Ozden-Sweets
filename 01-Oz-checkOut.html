@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check out</title>
-    <link rel="stylesheet"  href="Styles/01-Oz-about.css">
+    <meta charset="utf-8">
+    <title>Checkout</title>
+
+    <!-- This code is needed for responsive design to work.
+    (Responsive design = make the website look good on
+    smaller screen sizes like a phone or a tablet). -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- links to arabic font almarai -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
 
     <!-- Here are the CSS files for this page. -->
-    <link rel="stylesheet" href="Styles/shared/general.css">
     <link rel="stylesheet" href="Styles/shared/fonts-styles.css">
     <link rel="stylesheet" href="Styles/shared/Ozden-header.css">
     <link rel="stylesheet" href="Styles/shared/Ozden-header-links.css">
-    <link rel="stylesheet" href="Styles/pages/productListings.css">
     <link rel="stylesheet" href="Styles/pages/checkout/checkout-header.css">
     <link rel="stylesheet" href="Styles/pages/checkout/checkout.css">
 </head>
@@ -19,8 +25,7 @@
     <div class="Ozden-header">
         <div class="Ozden-header-right-section">
             <a href="01-Oz-home.html" class="header-link">
-                <img class="Ozden-logo"
-                src="images/icons/Ozdenlogo.png" alt="Ozden logo">
+                <img class="Ozden-logo" src="images/icons/Ozdenlogo.png" alt="Ozden logo">
             </a>
         </div>
         <div class="Ozden-header-middle-section">
@@ -29,7 +34,6 @@
                 <img class="search-icon" src="images/icons/search-icon.png" alt="بحث">
             </button>
         </div>
-
         <div class="Ozden-header-left-section">
             <a class="orders-link header-link" href="orders.html">
                 <span class="returns-text">Returns</span>
@@ -42,17 +46,52 @@
             </a>
         </div>
     </div>
-        <nav class="Ozden-header-links">
-            <a rel="home page"  href="01-Oz-home.html">الرئيسية</a>
-                <a rel="products listings" href="01-Oz-productListings.html">المنتجات</a>
-                <a rel="Admin panel" href="01-Oz-AdminPanel.html">الادارة</a>
-                <a rel="check out" href="01-Oz-checkOut.html">عربة المشتريات</a>
-        </nav>
-    <main lang="en" dir="ltr">
-        <h1>Check out</h1>
-        <p>Thank you for choosing Ozden Sweets! Your order has been successfully placed.</p>
-        <p>We will process your order and notify you once it is ready for delivery or pickup.</p>
-    </main>
-    <script></script>
+
+    <nav class="Ozden-header-links">
+        <a rel="home page" href="01-Oz-home.html">الرئيسية</a>
+        <a rel="products listings" href="01-Oz-products.html">المنتجات</a>
+        <a rel="Admin panel" href="01-Oz-AdminPanel.html">الادارة</a>
+        <a rel="check out" href="01-Oz-checkOut.html">عربة المشتريات</a>
+    </nav>
+
+    <div class="main">
+    </div>
+
+    <div class="payment-summary">
+        <div class="payment-summary-title">
+            Order Summary
+        </div>
+
+        <div class="payment-summary-row">
+            <div>Items (3):</div>
+            <div class="payment-summary-money">$42.75</div>
+        </div>
+
+        <div class="payment-summary-row">
+            <div>Shipping &amp; handling:</div>
+            <div class="payment-summary-money">$4.99</div>
+        </div>
+
+        <div class="payment-summary-row subtotal-row">
+            <div>Total before tax:</div>
+            <div class="payment-summary-money">$47.74</div>
+        </div>
+
+        <div class="payment-summary-row">
+            <div>Estimated tax (10%):</div>
+            <div class="payment-summary-money">$4.77</div>
+        </div>
+
+        <div class="payment-summary-row total-row">
+            <div>Order total:</div>
+            <div class="payment-summary-money">$52.51</div>
+        </div>
+
+        <button class="place-order-button button-primary">
+            Place your order
+        </button>
+    </div>
+
+    <script src="JS/01-Oz-checkout.js"></script>
 </body>
 </html>
