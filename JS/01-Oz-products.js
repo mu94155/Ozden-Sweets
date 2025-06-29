@@ -21,15 +21,14 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart" type="button">
             Add to Cart
           </button>
         </div> `;
 });
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
-document.querySelectorAll('.add-to-cart').forEach(button => button.addEventListener('click', () => {
-  const productName= button.dataSet.productName;
-  cart.push({ product: productName ,
-    quantity: 1
-  });
-}));
+document.querySelectorAll('.js-add-to-cart').forEach((button) => {
+  button.addEventListener('click',() => {
+  console.log('Add to Cart button clicked');
+})
+});
