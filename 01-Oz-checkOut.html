@@ -2,19 +2,24 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8">
-    <title>Checkout</title>
+    <title>Checkout - Ozden Sweets</title>
 
     <!-- This code is needed for responsive design to work.
     (Responsive design = make the website look good on
     smaller screen sizes like a phone or a tablet). -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    
     <!-- links to arabic font almarai -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
 
-    <!-- Here are the CSS files for this page. -->
+    <!-- Custom CSS files -->
     <link rel="stylesheet" href="Styles/shared/fonts-styles.css">
     <link rel="stylesheet" href="Styles/shared/Ozden-header.css">
     <link rel="stylesheet" href="Styles/shared/Ozden-header-links.css">
@@ -22,77 +27,124 @@
     <link rel="stylesheet" href="Styles/pages/checkout/checkout.css">
 </head>
 <body>
-    <div class="Ozden-header">
-        <div class="Ozden-header-right-section">
-            <a href="01-Oz-home.html" class="header-link">
-                <img class="Ozden-logo" src="images/icons/Ozdenlogo.png" alt="Ozden logo">
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="01-Oz-home.html">
+                <img src="images/icons/Ozdenlogo.png" alt="Ozden logo" height="40" class="d-inline-block align-text-top">
             </a>
-        </div>
-        <div class="Ozden-header-middle-section">
-            <input class="search-bar" type="text" placeholder="Search">
-            <button class="search-button" title="بحث" aria-label="بحث">
-                <img class="search-icon" src="images/icons/search-icon.png" alt="بحث">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-home.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-products.html">المنتجات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-AdminPanel.html">الادارة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="01-Oz-checkOut.html">عربة المشتريات</a>
+                    </li>
+                </ul>
+                
+                <!-- Search form -->
+                <form class="d-flex me-3">
+                    <input class="form-control me-2" type="search" placeholder="بحث" aria-label="بحث">
+                    <button class="btn btn-outline-secondary" type="submit" title="بحث" aria-label="بحث">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                
+                <!-- Cart and Orders -->
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-outline-primary me-2" href="orders.html">
+                        <i class="bi bi-arrow-return-left"></i> Returns & Orders
+                    </a>
+                    <a class="btn btn-primary position-relative" href="01-Oz-checkOut.html">
+                        <i class="bi bi-cart"></i> Cart
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="Ozden-header-left-section">
-            <a class="orders-link header-link" href="orders.html">
-                <span class="returns-text">Returns</span>
-                <span class="orders-text">& Orders</span>
-            </a>
-            <a class="cart-link header-link" href="01-Oz-checkOut.html">
-                <img class="cart-icon" src="images/icons/cart-icon.png" alt="Cart Icon">
-                <div class="cart-quantity">3</div>
-                <div class="cart-text">Cart</div>
-            </a>
-        </div>
-    </div>
-
-    <nav class="Ozden-header-links">
-        <a rel="home page" href="01-Oz-home.html">الرئيسية</a>
-        <a rel="products listings" href="01-Oz-products.html">المنتجات</a>
-        <a rel="Admin panel" href="01-Oz-AdminPanel.html">الادارة</a>
-        <a rel="check out" href="01-Oz-checkOut.html">عربة المشتريات</a>
     </nav>
 
-    <div class="main">
+    <div class="container-fluid py-4">
+        <div class="row">
+            <!-- Cart Items Section -->
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title mb-0">
+                            <i class="bi bi-cart"></i> عربة التسوق
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="main">
+                            <!-- Cart items will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Summary Section -->
+            <div class="col-lg-4">
+                <div class="card sticky-top">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">ملخص الطلب</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="payment-summary">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>الاختيارات: (3):</span>
+                                <span class="fw-bold">$42.75</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>التخليص وتكاليف التوصيل:</span>
+                                <span class="fw-bold">$4.99</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-3 border-bottom pb-3">
+                                <span>المجموع قبل الضريبة:</span>
+                                <span class="fw-bold">$47.74</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>الضريبة (10%):</span>
+                                <span class="fw-bold">$4.77</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-4 border-top pt-3">
+                                <span class="h5">مجموع الطلب:</span>
+                                <span class="h5 text-primary">$52.51</span>
+                            </div>
+
+                            <button class="btn btn-primary btn-lg w-100 place-order-button">
+                                <i class="bi bi-check-circle me-2"></i>
+                                <span>إتمام الطلب</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="payment-summary">
-        <div class="payment-summary-title">
-            ملخص الطلب:
-        </div>
-
-        <div class="payment-summary-row">
-            <div>الاختيارات: (3):</div>
-            <div class="payment-summary-money">$42.75</div>
-        </div>
-
-        <div class="payment-summary-row">
-            <div>التخليص وتكاليف التوصيل:</div>
-            <div class="payment-summary-money">$4.99</div>
-        </div>
-
-        <div class="payment-summary-row subtotal-row">
-            <div>المجموع قبل الضريبة:</div>
-            <div class="payment-summary-money">$47.74</div>
-        </div>
-
-        <div class="payment-summary-row">
-            <div>الضريبة (10%):</div>
-            <div class="payment-summary-money">$4.77</div>
-        </div>
-
-        <div class="payment-summary-row total-row">
-            <div>مجموع الطلب:</div>
-            <div class="payment-summary-money">$52.51</div>
-        </div>
-
-        <button class="place-order-button button-primary">
-            <span class="button-text">إتمام الطلب</span>
-            <img class="button-icon" src="images/icons/checkmark.png" alt="Checkout Icon">
-        </button>
-    </div>
-
+    <!-- Bootstrap JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Common functionality -->
+    <script src="JS/common.js"></script>
+    <!-- Checkout page specific functionality -->
     <script src="JS/01-Oz-checkout.js"></script>
 </body>
 </html>

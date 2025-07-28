@@ -4,176 +4,335 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Ozden Sweets home page</title>
-    <!-- Here are the CSS files for this page. -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS files -->
     <link rel="stylesheet" href="Styles/shared/fonts-styles.css">
     <link rel="stylesheet" href="Styles/shared/Ozden-header.css">
     <link rel="stylesheet" href="Styles/shared/Ozden-header-links.css">
     <link rel="stylesheet" href="Styles/pages/home.css">
+    
+    <!-- Custom Bootstrap overrides -->
+    <style>
+        .product-card-image {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .menu-image {
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body>
-    <div class="Ozden-header">
-        <div class="Ozden-header-right-section">
-            <a href="01-Oz-home.html" class="header-link">
-                <img class="Ozden-logo"
-                src="images/icons/Ozdenlogo.png" alt="Ozden logo">
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="01-Oz-home.html">
+                <img src="images/icons/Ozdenlogo.png" alt="Ozden logo" height="40" class="d-inline-block align-text-top">
             </a>
-        </div>
-
-        <div class="Ozden-header-middle-section">
-            <input class="search-bar" type="text" placeholder="Search">
-            <button class="search-button" title="بحث" aria-label="بحث">
-                <img class="search-icon" src="images/icons/search-icon.png" alt="بحث">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-        </div>
-
-        <div class="Ozden-header-left-section">
-            <a class="orders-link header-link" href="orders.html">
-                <span class="returns-text">Returns</span>
-                <span class="orders-text">& Orders</span>
-            </a>
-            <a class="cart-link header-link" href="01-Oz-checkOut.html">
-                <img class="cart-icon" src="images/icons/cart-icon.png" alt="Cart Icon">
-                <div class="cart-quantity">3</div>
-                <div class="cart-text">Cart</div>
-            </a>
-        </div>
-    </div>
-        <nav class = "Ozden-header-links">
-            <a rel="home page"  href="01-Oz-home.html">الرئيسية</a>
-            <a rel="products listings" href="01-Oz-products.html">المنتجات</a>
-            <a rel="Admin panel" href="01-Oz-AdminPanel.html">الادارة</a>
-            <a rel="check out" href="01-Oz-checkOut.html">عربة المشتريات</a>
-        </nav>
-    <main lang="en" dir="ltr">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1>Welcome to Ozden Sweets</h1>
-                <p class="hero-subtitle">Freshly baked delights made with love, delivered to your doorstep</p>
-                <div class="hero-buttons">
-                    <a href="01-Oz-products.html" class="btn-primary">Shop Now</a>
-                    <a href="#menu" class="btn-secondary">View Menu</a>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="01-Oz-home.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-products.html">المنتجات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-AdminPanel.html">الادارة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-checkOut.html">عربة المشتريات</a>
+                    </li>
+                </ul>
+                
+                <!-- Search form -->
+                <form class="d-flex me-3">
+                    <input class="form-control me-2" type="search" placeholder="بحث" aria-label="بحث">
+                    <button class="btn btn-outline-secondary" type="submit" title="بحث" aria-label="بحث">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                
+                <!-- Cart and Orders -->
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-outline-primary me-2" href="orders.html">
+                        <i class="bi bi-arrow-return-left"></i> Returns & Orders
+                    </a>
+                    <a class="btn btn-primary position-relative" href="01-Oz-checkOut.html">
+                        <i class="bi bi-cart"></i> Cart
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                        </span>
+                    </a>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="Images/OzdenBakeryMenueTitle.JPG" alt="Ozden Bakery Menu">
+        </div>
+    </nav>
+    <main lang="en" dir="ltr" class="container-fluid">
+        <!-- Hero Section -->
+        <section class="hero-section py-5 bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="hero-content">
+                            <h1 class="display-4 fw-bold text-primary mb-3">Welcome to Ozden Sweets</h1>
+                            <p class="lead mb-4">Freshly baked delights made with love, delivered to your doorstep</p>
+                            <div class="hero-buttons">
+                                <a href="01-Oz-products.html" class="btn btn-primary btn-lg me-3">Shop Now</a>
+                                <a href="#menu" class="btn btn-outline-secondary btn-lg">View Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hero-image">
+                            <img src="Images/OzdenBakeryMenueTitle.JPG" alt="Ozden Bakery Menu" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Featured Products Section -->
-        <section class="featured-products">
-            <h2>Featured Products</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="Images/brownies.jpg" alt="Brownies">
-                    <h3>Premium Brownies</h3>
-                    <p>Rich, fudgy brownies made with premium chocolate</p>
-                    <span class="price">Starting from $12</span>
-                </div>
-                <div class="product-card">
-                    <img src="Images/newyorkCookies.jpg" alt="New York Cookies">
-                    <h3>New York Style Cookies</h3>
-                    <p>Soft, chewy cookies with various flavors</p>
-                    <span class="price">Starting from $15</span>
-                </div>
-                <div class="product-card">
-                    <img src="Images/CaramelBites.jpg" alt="Caramel Bites">
-                    <h3>Caramel Bites</h3>
-                    <p>Delicious bite-sized caramel treats</p>
-                    <span class="price">Starting from $10</span>
+        <section class="featured-products py-5">
+            <div class="container">
+                <h2 class="text-center mb-5 display-5 fw-bold">Featured Products</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="Images/brownies.jpg" alt="Brownies" class="card-img-top product-card-image">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Premium Brownies</h5>
+                                <p class="card-text flex-grow-1">Rich, fudgy brownies made with premium chocolate</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-primary fs-6">Starting from $12</span>
+                                    <button class="btn btn-outline-primary btn-sm">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="Images/newyorkCookies.jpg" alt="New York Cookies" class="card-img-top product-card-image">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">New York Style Cookies</h5>
+                                <p class="card-text flex-grow-1">Soft, chewy cookies with various flavors</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-primary fs-6">Starting from $15</span>
+                                    <button class="btn btn-outline-primary btn-sm">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="Images/CaramelBites.jpg" alt="Caramel Bites" class="card-img-top product-card-image">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Caramel Bites</h5>
+                                <p class="card-text flex-grow-1">Delicious bite-sized caramel treats</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-primary fs-6">Starting from $10</span>
+                                    <button class="btn btn-outline-primary btn-sm">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section class="about-section">
-            <div class="about-content">
-                <h2>About Ozden Sweets</h2>
-                <p>At Ozden Sweets, we believe that every moment deserves to be sweetened. Our bakery has been crafting exceptional desserts with the finest ingredients and traditional techniques passed down through generations.</p>
-                <div class="features">
-                    <div class="feature">
-                        <h4>Fresh Daily</h4>
-                        <p>All our products are baked fresh daily using premium ingredients</p>
+        <section class="about-section py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="display-5 fw-bold mb-4">About Ozden Sweets</h2>
+                        <p class="lead mb-5">At Ozden Sweets, we believe that every moment deserves to be sweetened. Our bakery has been crafting exceptional desserts with the finest ingredients and traditional techniques passed down through generations.</p>
                     </div>
-                    <div class="feature">
-                        <h4>Custom Orders</h4>
-                        <p>Special occasions deserve special treats - we create custom orders for any event</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="text-center">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 feature-icon">
+                                <i class="bi bi-clock fs-2"></i>
+                            </div>
+                            <h4>Fresh Daily</h4>
+                            <p>All our products are baked fresh daily using premium ingredients</p>
+                        </div>
                     </div>
-                    <div class="feature">
-                        <h4>Quality Promise</h4>
-                        <p>We guarantee the highest quality and freshness in every bite</p>
+                    <div class="col-lg-4">
+                        <div class="text-center">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 feature-icon">
+                                <i class="bi bi-gift fs-2"></i>
+                            </div>
+                            <h4>Custom Orders</h4>
+                            <p>Special occasions deserve special treats - we create custom orders for any event</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-center">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 feature-icon">
+                                <i class="bi bi-award fs-2"></i>
+                            </div>
+                            <h4>Quality Promise</h4>
+                            <p>We guarantee the highest quality and freshness in every bite</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Services Section -->
-        <section class="services-section">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>🚚 Home Delivery</h3>
-                    <p>Fast and reliable delivery to your doorstep</p>
-                </div>
-                <div class="service-card">
-                    <h3>🎂 Custom Cakes</h3>
-                    <p>Personalized cakes for birthdays, weddings, and special events</p>
-                </div>
-                <div class="service-card">
-                    <h3>📦 Gift Packages</h3>
-                    <p>Beautiful gift boxes perfect for any occasion</p>
-                </div>
-                <div class="service-card">
-                    <h3>🎉 Event Catering</h3>
-                    <p>Sweet catering solutions for your special events</p>
+        <section class="services-section py-5">
+            <div class="container">
+                <h2 class="text-center mb-5 display-5 fw-bold">Our Services</h2>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card text-center border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="display-6 mb-3">🚚</div>
+                                <h5 class="card-title">Home Delivery</h5>
+                                <p class="card-text">Fast and reliable delivery to your doorstep</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card text-center border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="display-6 mb-3">🎂</div>
+                                <h5 class="card-title">Custom Cakes</h5>
+                                <p class="card-text">Personalized cakes for birthdays, weddings, and special events</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card text-center border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="display-6 mb-3">📦</div>
+                                <h5 class="card-title">Gift Packages</h5>
+                                <p class="card-text">Beautiful gift boxes perfect for any occasion</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card text-center border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="display-6 mb-3">🎉</div>
+                                <h5 class="card-title">Event Catering</h5>
+                                <p class="card-text">Sweet catering solutions for your special events</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Menu Section -->
-        <section id="menu" class="menu-section">
-            <h2>Our Menu</h2>
-            <div class="menu-images">
-                <img src="Images/OzdenBakeryMenueEnglish.JPG" alt="English Menu" class="menu-image">
-                <img src="Images/OzdenBakeryMenue.JPG" alt="Arabic Menu" class="menu-image">
+        <section id="menu" class="menu-section py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5 display-5 fw-bold">Our Menu</h2>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <img src="Images/OzdenBakeryMenueEnglish.JPG" alt="English Menu" class="card-img-top menu-image">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">English Menu</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <img src="Images/OzdenBakeryMenue.JPG" alt="Arabic Menu" class="card-img-top menu-image">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Arabic Menu</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Delivery Information -->
-        <section class="delivery-info">
-            <h2>Delivery Information</h2>
-            <div class="delivery-content">
-                <img src="Images/OzdenBakeryDeliveryCond.jpg" alt="Delivery Conditions" class="delivery-image">
-                <div class="delivery-text">
-                    <h3>Fast & Reliable Delivery</h3>
-                    <p>We deliver fresh sweets right to your door with our reliable delivery service. Check our delivery conditions for more details about areas covered and delivery times.</p>
-                    <a href="01-Oz-products.html" class="btn-primary">Order Now</a>
+        <section class="delivery-info py-5">
+            <div class="container">
+                <h2 class="text-center mb-5 display-5 fw-bold">Delivery Information</h2>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <img src="Images/OzdenBakeryDeliveryCond.jpg" alt="Delivery Conditions" class="img-fluid rounded shadow">
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ps-lg-4 mt-4 mt-lg-0">
+                            <h3 class="mb-3">Fast & Reliable Delivery</h3>
+                            <p class="lead mb-4">We deliver fresh sweets right to your door with our reliable delivery service. Check our delivery conditions for more details about areas covered and delivery times.</p>
+                            <a href="01-Oz-products.html" class="btn btn-primary btn-lg">Order Now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section class="contact-section">
-            <h2>Visit Us Today</h2>
-            <p>Experience the sweetness that has made Ozden Sweets a beloved local favorite.</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <h4>📍 Location</h4>
-                    <p>Visit our bakery for the freshest selection</p>
+        <section class="contact-section py-5 bg-dark text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="display-5 fw-bold mb-3">Visit Us Today</h2>
+                        <p class="lead mb-5">Experience the sweetness that has made Ozden Sweets a beloved local favorite.</p>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <h4>🕒 Hours</h4>
-                    <p>Open daily - Fresh baked goods available</p>
-                </div>
-                <div class="contact-item">
-                    <h4>📞 Phone</h4>
-                    <p>Call us for custom orders and inquiries</p>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-geo-alt fs-1 text-primary"></i>
+                            </div>
+                            <h4>📍 Location</h4>
+                            <p>Visit our bakery for the freshest selection</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-clock fs-1 text-primary"></i>
+                            </div>
+                            <h4>🕒 Hours</h4>
+                            <p>Open daily - Fresh baked goods available</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-telephone fs-1 text-primary"></i>
+                            </div>
+                            <h4>📞 Phone</h4>
+                            <p>Call us for custom orders and inquiries</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
     
-
-    <script></script>
+    <!-- Bootstrap JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Common functionality -->
+    <script src="JS/common.js"></script>
+    <!-- Home page specific functionality -->
+    <script src="JS/01-Oz-home.js"></script>
 </body>
 </html>
