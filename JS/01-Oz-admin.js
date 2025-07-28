@@ -244,7 +244,7 @@ function addNewProduct() {
                     <option value="others">أخرى</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">إضافة المنتج</button>
+            <button type="submit" class="btn btn-primary btn-arabic">إضافة المنتج</button>
         </form>
     `);
     
@@ -282,7 +282,7 @@ function showModal(title, content) {
                         ${content}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                        <button type="button" class="btn btn-secondary btn-arabic" data-bs-dismiss="modal">إغلاق</button>
                     </div>
                 </div>
             </div>

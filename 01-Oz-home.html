@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Ozden Sweets home page</title>
+    <title>صفحة أوزدن للحلويات</title>
+    
+    <!-- Google Arabic Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -16,6 +22,30 @@
     
     <!-- Custom Bootstrap overrides -->
     <style>
+        /* Arabic Font Setup */
+        :root {
+            --arabic-font-primary: 'Cairo', 'Almarai', 'Tajawal', sans-serif;
+            --arabic-font-secondary: 'Noto Sans Arabic', 'Almarai', sans-serif;
+            --arabic-font-elegant: 'Amiri', 'Cairo', serif;
+        }
+        
+        /* Apply Arabic fonts to Arabic text elements */
+        [lang="ar"], .arabic-text {
+            font-family: var(--arabic-font-primary);
+        }
+        
+        /* Navigation Arabic text */
+        .navbar-nav .nav-link {
+            font-family: var(--arabic-font-primary);
+            font-weight: 500;
+        }
+        
+        /* Headings in Arabic */
+        .arabic-heading {
+            font-family: var(--arabic-font-elegant);
+            font-weight: 600;
+        }
+        
         .product-card-image {
             height: 250px;
             object-fit: cover;
@@ -31,6 +61,40 @@
             max-height: 400px;
             object-fit: contain;
         }
+        
+        /* Better Arabic text rendering */
+        .arabic-content {
+            text-rendering: optimizeLegibility;
+            -webkit-font-feature-settings: "liga", "kern";
+            font-feature-settings: "liga", "kern";
+            direction: rtl;
+            text-align: right;
+        }
+        
+        /* Search placeholder styling for Arabic */
+        .form-control::placeholder {
+            font-family: var(--arabic-font-primary);
+            opacity: 0.7;
+        }
+        
+        /* Standardized Arabic button styling */
+        .btn-arabic {
+            font-family: var(--arabic-font-primary) !important;
+            font-weight: 500 !important;
+            font-size: 0.875rem !important; /* 14px equivalent */
+            direction: rtl !important;
+            text-align: center !important;
+        }
+        
+        .btn-arabic.btn-lg {
+            font-size: 1.125rem !important; /* 18px equivalent */
+            font-weight: 600 !important;
+        }
+        
+        .btn-arabic.btn-sm {
+            font-size: 0.75rem !important; /* 12px equivalent */
+            font-weight: 500 !important;
+        }
     </style>
 </head>
 <body>
@@ -38,7 +102,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="01-Oz-home.html">
-                <img src="images/icons/Ozdenlogo.png" alt="Ozden logo" height="40" class="d-inline-block align-text-top">
+                <img src="images/icons/Ozdenlogo.png" alt="Ozden logo" height="100" class="d-inline-block align-text-top">
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +110,7 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="nav justify-content-center">
                     <li class="nav-item">
                         <a class="nav-link active" href="01-Oz-home.html">الرئيسية</a>
                     </li>
@@ -72,10 +136,10 @@
                 <!-- Cart and Orders -->
                 <div class="d-flex align-items-center">
                     <a class="btn btn-outline-primary me-2" href="orders.html">
-                        <i class="bi bi-arrow-return-left"></i> Returns & Orders
+                        <i class="bi bi-arrow-return-left"></i> الإرجاع والطلبات
                     </a>
                     <a class="btn btn-primary position-relative" href="01-Oz-checkOut.html">
-                        <i class="bi bi-cart"></i> Cart
+                        <i class="bi bi-cart"></i> السلة
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             3
                         </span>
@@ -91,11 +155,11 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="hero-content">
-                            <h1 class="display-4 fw-bold text-primary mb-3">Welcome to Ozden Sweets</h1>
-                            <p class="lead mb-4">Freshly baked delights made with love, delivered to your doorstep</p>
+                            <h1 class="display-4 fw-bold text-primary mb-3 cairo-extrabold">مرحبا بكم في أوزدن للحلويات</h1>
+                            <p class="lead mb-4 arabic-text">حلويات طازجة مخبوزة بحب، تُسلم إلى باب منزلك</p>
                             <div class="hero-buttons">
-                                <a href="01-Oz-products.html" class="btn btn-primary btn-lg me-3">Shop Now</a>
-                                <a href="#menu" class="btn btn-outline-secondary btn-lg">View Menu</a>
+                                <a href="01-Oz-products.html" class="btn btn-primary btn-lg me-3 btn-arabic">تسوق الآن</a>
+                                <a href="#menu" class="btn btn-outline-secondary btn-lg btn-arabic">عرض القائمة</a>
                             </div>
                         </div>
                     </div>
@@ -111,17 +175,17 @@
         <!-- Featured Products Section -->
         <section class="featured-products py-5">
             <div class="container">
-                <h2 class="text-center mb-5 display-5 fw-bold">Featured Products</h2>
+                <h2 class="text-center mb-5 display-5 fw-bold arabic-text">المنتجات المميزة</h2>
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6">
                         <div class="card h-100 shadow-sm">
                             <img src="Images/brownies.jpg" alt="Brownies" class="card-img-top product-card-image">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Premium Brownies</h5>
-                                <p class="card-text flex-grow-1">Rich, fudgy brownies made with premium chocolate</p>
+                                <h5 class="card-title arabic-text">براونيز فاخر</h5>
+                                <p class="card-text flex-grow-1 arabic-text">براونيز غني وكثيف مصنوع من الشوكولاتة الفاخرة</p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="badge bg-primary fs-6">Starting from $12</span>
-                                    <button class="btn btn-outline-primary btn-sm">Add to Cart</button>
+                                    <span class="badge bg-primary fs-6 arabic-text">يبدأ من 12ر.ع</span>
+                                    <button class="btn btn-outline-primary btn-sm btn-arabic">أضف للسلة</button>
                                 </div>
                             </div>
                         </div>
@@ -130,11 +194,11 @@
                         <div class="card h-100 shadow-sm">
                             <img src="Images/newyorkCookies.jpg" alt="New York Cookies" class="card-img-top product-card-image">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">New York Style Cookies</h5>
-                                <p class="card-text flex-grow-1">Soft, chewy cookies with various flavors</p>
+                                <h5 class="card-title arabic-text">كوكيز نيويورك</h5>
+                                <p class="card-text flex-grow-1 arabic-text">كوكيز طري ولذيذ بنكهات متنوعة</p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="badge bg-primary fs-6">Starting from $15</span>
-                                    <button class="btn btn-outline-primary btn-sm">Add to Cart</button>
+                                    <span class="badge bg-primary fs-6 arabic-text">يبدأ من 15ر.ع</span>
+                                    <button class="btn btn-outline-primary btn-sm btn-arabic">أضف للسلة</button>
                                 </div>
                             </div>
                         </div>
@@ -143,11 +207,11 @@
                         <div class="card h-100 shadow-sm">
                             <img src="Images/CaramelBites.jpg" alt="Caramel Bites" class="card-img-top product-card-image">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Caramel Bites</h5>
-                                <p class="card-text flex-grow-1">Delicious bite-sized caramel treats</p>
+                                <h5 class="card-title arabic-text">قطع الكراميل</h5>
+                                <p class="card-text flex-grow-1 arabic-text">قطع كراميل لذيذة بحجم مثالي</p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="badge bg-primary fs-6">Starting from $10</span>
-                                    <button class="btn btn-outline-primary btn-sm">Add to Cart</button>
+                                    <span class="badge bg-primary fs-6 arabic-text">يبدأ من 10ر.ع</span>
+                                    <button class="btn btn-outline-primary btn-sm btn-arabic">أضف للسلة</button>
                                 </div>
                             </div>
                         </div>
@@ -161,8 +225,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="display-5 fw-bold mb-4">About Ozden Sweets</h2>
-                        <p class="lead mb-5">At Ozden Sweets, we believe that every moment deserves to be sweetened. Our bakery has been crafting exceptional desserts with the finest ingredients and traditional techniques passed down through generations.</p>
+                        <h2 class="display-5 fw-bold mb-4 arabic-text">عن أوزدن للحلويات</h2>
+                        <p class="lead mb-5 arabic-text">في أوزدن للحلويات، نؤمن أن كل لحظة تستحق أن تُحلّى. مخبزنا يصنع الحلويات الاستثنائية بأجود المكونات والتقنيات التقليدية المتوارثة عبر الأجيال.</p>
                     </div>
                 </div>
                 <div class="row g-4">
@@ -171,8 +235,8 @@
                             <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 feature-icon">
                                 <i class="bi bi-clock fs-2"></i>
                             </div>
-                            <h4>Fresh Daily</h4>
-                            <p>All our products are baked fresh daily using premium ingredients</p>
+                            <h4 class="arabic-text">طازج يومياً</h4>
+                            <p class="arabic-text">جميع منتجاتنا تُخبز طازجة يومياً باستخدام أفضل المكونات</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -180,8 +244,8 @@
                             <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 feature-icon">
                                 <i class="bi bi-gift fs-2"></i>
                             </div>
-                            <h4>Custom Orders</h4>
-                            <p>Special occasions deserve special treats - we create custom orders for any event</p>
+                            <h4 class="arabic-text">طلبات مخصصة</h4>
+                            <p class="arabic-text">المناسبات الخاصة تستحق حلويات خاصة - نصنع طلبات مخصصة لأي مناسبة</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -189,8 +253,8 @@
                             <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 feature-icon">
                                 <i class="bi bi-award fs-2"></i>
                             </div>
-                            <h4>Quality Promise</h4>
-                            <p>We guarantee the highest quality and freshness in every bite</p>
+                            <h4 class="arabic-text">ضمان الجودة</h4>
+                            <p class="arabic-text">نضمن أعلى جودة وطزاجة في كل قضمة</p>
                         </div>
                     </div>
                 </div>
@@ -200,14 +264,14 @@
         <!-- Services Section -->
         <section class="services-section py-5">
             <div class="container">
-                <h2 class="text-center mb-5 display-5 fw-bold">Our Services</h2>
+                <h2 class="text-center mb-5 display-5 fw-bold arabic-text">خدماتنا</h2>
                 <div class="row g-4">
                     <div class="col-lg-3 col-md-6">
                         <div class="card text-center border-0 shadow-sm h-100">
                             <div class="card-body">
                                 <div class="display-6 mb-3">🚚</div>
-                                <h5 class="card-title">Home Delivery</h5>
-                                <p class="card-text">Fast and reliable delivery to your doorstep</p>
+                                <h5 class="card-title arabic-text">التوصيل للمنزل</h5>
+                                <p class="card-text arabic-text">توصيل سريع وموثوق إلى باب منزلك</p>
                             </div>
                         </div>
                     </div>
@@ -215,8 +279,8 @@
                         <div class="card text-center border-0 shadow-sm h-100">
                             <div class="card-body">
                                 <div class="display-6 mb-3">🎂</div>
-                                <h5 class="card-title">Custom Cakes</h5>
-                                <p class="card-text">Personalized cakes for birthdays, weddings, and special events</p>
+                                <h5 class="card-title arabic-text">كيك مخصص</h5>
+                                <p class="card-text arabic-text">كيك شخصي لأعياد الميلاد والزفاف والمناسبات الخاصة</p>
                             </div>
                         </div>
                     </div>
@@ -224,8 +288,8 @@
                         <div class="card text-center border-0 shadow-sm h-100">
                             <div class="card-body">
                                 <div class="display-6 mb-3">📦</div>
-                                <h5 class="card-title">Gift Packages</h5>
-                                <p class="card-text">Beautiful gift boxes perfect for any occasion</p>
+                                <h5 class="card-title arabic-text">باقات الهدايا</h5>
+                                <p class="card-text arabic-text">صناديق هدايا جميلة مثالية لأي مناسبة</p>
                             </div>
                         </div>
                     </div>
@@ -233,8 +297,8 @@
                         <div class="card text-center border-0 shadow-sm h-100">
                             <div class="card-body">
                                 <div class="display-6 mb-3">🎉</div>
-                                <h5 class="card-title">Event Catering</h5>
-                                <p class="card-text">Sweet catering solutions for your special events</p>
+                                <h5 class="card-title arabic-text">تموين المناسبات</h5>
+                                <p class="card-text arabic-text">حلول تموين حلويات لمناسباتك الخاصة</p>
                             </div>
                         </div>
                     </div>
@@ -245,13 +309,13 @@
         <!-- Menu Section -->
         <section id="menu" class="menu-section py-5 bg-light">
             <div class="container">
-                <h2 class="text-center mb-5 display-5 fw-bold">Our Menu</h2>
+                <h2 class="text-center mb-5 display-5 fw-bold arabic-text">قائمتنا</h2>
                 <div class="row g-4">
                     <div class="col-lg-6">
                         <div class="card shadow-sm">
                             <img src="Images/OzdenBakeryMenueEnglish.JPG" alt="English Menu" class="card-img-top menu-image">
                             <div class="card-body">
-                                <h5 class="card-title text-center">English Menu</h5>
+                                <h5 class="card-title text-center arabic-text">القائمة الإنجليزية</h5>
                             </div>
                         </div>
                     </div>
@@ -259,7 +323,7 @@
                         <div class="card shadow-sm">
                             <img src="Images/OzdenBakeryMenue.JPG" alt="Arabic Menu" class="card-img-top menu-image">
                             <div class="card-body">
-                                <h5 class="card-title text-center">Arabic Menu</h5>
+                                <h5 class="card-title text-center arabic-text">القائمة العربية</h5>
                             </div>
                         </div>
                     </div>
@@ -270,16 +334,16 @@
         <!-- Delivery Information -->
         <section class="delivery-info py-5">
             <div class="container">
-                <h2 class="text-center mb-5 display-5 fw-bold">Delivery Information</h2>
+                <h2 class="text-center mb-5 display-5 fw-bold arabic-text">معلومات التوصيل</h2>
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <img src="Images/OzdenBakeryDeliveryCond.jpg" alt="Delivery Conditions" class="img-fluid rounded shadow">
                     </div>
                     <div class="col-lg-6">
                         <div class="ps-lg-4 mt-4 mt-lg-0">
-                            <h3 class="mb-3">Fast & Reliable Delivery</h3>
-                            <p class="lead mb-4">We deliver fresh sweets right to your door with our reliable delivery service. Check our delivery conditions for more details about areas covered and delivery times.</p>
-                            <a href="01-Oz-products.html" class="btn btn-primary btn-lg">Order Now</a>
+                            <h3 class="mb-3 arabic-text">توصيل سريع وموثوق</h3>
+                            <p class="lead mb-4 arabic-text">نوصل الحلويات الطازجة مباشرة إلى بابك مع خدمة التوصيل الموثوقة. تحقق من شروط التوصيل لمزيد من التفاصيل حول المناطق المشمولة وأوقات التوصيل.</p>
+                            <a href="01-Oz-products.html" class="btn btn-primary btn-lg btn-arabic">اطلب الآن</a>
                         </div>
                     </div>
                 </div>
@@ -291,8 +355,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="display-5 fw-bold mb-3">Visit Us Today</h2>
-                        <p class="lead mb-5">Experience the sweetness that has made Ozden Sweets a beloved local favorite.</p>
+                        <h2 class="display-5 fw-bold mb-3 arabic-text">زورونا اليوم</h2>
+                        <p class="lead mb-5 arabic-text">اختبروا الحلاوة التي جعلت أوزدن للحلويات المفضل المحلي المحبوب.</p>
                     </div>
                 </div>
                 <div class="row g-4">
@@ -301,8 +365,8 @@
                             <div class="mb-3">
                                 <i class="bi bi-geo-alt fs-1 text-primary"></i>
                             </div>
-                            <h4>📍 Location</h4>
-                            <p>Visit our bakery for the freshest selection</p>
+                            <h4 class="arabic-text">📍 الموقع</h4>
+                            <p class="arabic-text">زوروا مخبزنا للحصول على أطزج تشكيلة</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -310,8 +374,8 @@
                             <div class="mb-3">
                                 <i class="bi bi-clock fs-1 text-primary"></i>
                             </div>
-                            <h4>🕒 Hours</h4>
-                            <p>Open daily - Fresh baked goods available</p>
+                            <h4 class="arabic-text">🕒 ساعات العمل</h4>
+                            <p class="arabic-text">مفتوح يومياً - معجنات طازجة متاحة</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -319,8 +383,8 @@
                             <div class="mb-3">
                                 <i class="bi bi-telephone fs-1 text-primary"></i>
                             </div>
-                            <h4>📞 Phone</h4>
-                            <p>Call us for custom orders and inquiries</p>
+                            <h4 class="arabic-text">📞 الهاتف</h4>
+                            <p class="arabic-text">اتصلوا بنا للطلبات المخصصة والاستفسارات</p>
                         </div>
                     </div>
                 </div>

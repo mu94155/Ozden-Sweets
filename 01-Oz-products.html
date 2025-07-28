@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ozden Products</title>
 
+    <!-- Google Arabic Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -17,6 +22,49 @@
     
     <!-- Custom Bootstrap overrides -->
     <style>
+        /* Arabic Font Setup */
+        :root {
+            --arabic-font-primary: 'Cairo', 'Almarai', 'Tajawal', sans-serif;
+            --arabic-font-secondary: 'Noto Sans Arabic', 'Almarai', sans-serif;
+            --arabic-font-elegant: 'Amiri', 'Cairo', serif;
+        }
+        
+        /* Apply Arabic fonts to Arabic text elements */
+        [lang="ar"], .arabic-text {
+            font-family: var(--arabic-font-primary);
+        }
+        
+        /* Navigation Arabic text */
+        .navbar-nav .nav-link {
+            font-family: var(--arabic-font-primary);
+            font-weight: 500;
+        }
+        
+        /* Search placeholder styling for Arabic */
+        .form-control::placeholder {
+            font-family: var(--arabic-font-primary);
+            opacity: 0.7;
+        }
+        
+        /* Standardized Arabic button styling */
+        .btn-arabic {
+            font-family: var(--arabic-font-primary) !important;
+            font-weight: 500 !important;
+            font-size: 0.875rem !important; /* 14px equivalent */
+            direction: rtl !important;
+            text-align: center !important;
+        }
+        
+        .btn-arabic.btn-lg {
+            font-size: 1.125rem !important; /* 18px equivalent */
+            font-weight: 600 !important;
+        }
+        
+        .btn-arabic.btn-sm {
+            font-size: 0.75rem !important; /* 12px equivalent */
+            font-weight: 500 !important;
+        }
+        
         .product-card-image {
             height: 250px;
             object-fit: cover;
@@ -32,7 +80,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="01-Oz-home.html">
-                <img src="images/icons/Ozdenlogo.png" alt="Ozden logo" height="40" class="d-inline-block align-text-top">
+                <img src="images/icons/Ozdenlogo.png" alt="Ozden logo" height="100" class="d-inline-block align-text-top">
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +131,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="display-5 fw-bold text-center mb-5">Our Products</h1>
+                    <h1 class="display-5 fw-bold text-center mb-5">منتجاتنا</h1>
                     <div class="products-container">
                         <div class="row g-4 js-products-grid">
                             <!-- Products will be dynamically loaded here by JavaScript -->

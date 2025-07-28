@@ -34,12 +34,12 @@ function loadCartItems() {
         cartItems = [
             {
                 id: '1',
-                image: 'Images/newyorkCookies.jpg',
-                name: 'New York Style Cookies',
-                price: 15.00,
-                priceCents: 1500,
-                quantity: 2,
-                size: '8 pieces'
+                image: 'Images/icons/cart-icon.png',
+                name: 'العربة فارغة',
+                price: 0.00,
+                priceCents: 0,
+                quantity: 0,
+                size: '0 pieces'
             }
             
         ];
@@ -89,9 +89,9 @@ function displayCartItems() {
                                 </select>
                             </div>
                             <div class="col-md-2 text-center">
-                                <strong>$${(item.price * item.quantity).toFixed(2)}</strong>
+                                <strong>${(item.price * item.quantity).toFixed(2)} ر.ع</strong>
                                 <br>
-                                <small class="text-muted">$${item.price.toFixed(2)} each</small>
+                                <small class="text-muted">${item.price.toFixed(2)}  ر.ع للوحدة</small>
                             </div>
                             <div class="col-md-2 text-center">
                                 <button class="btn btn-outline-danger btn-sm remove-item" data-item-id="${item.id}">
@@ -208,7 +208,7 @@ function updateOrderSummary() {
     };
     
     if (summaryElements.items) {
-        summaryElements.items.textContent = `$${subtotal.toFixed(2)}`;
+        summaryElements.items.textContent = `${subtotal.toFixed(2)}`;
         // Update item count
         const itemCountElement = summaryElements.items.parentElement.querySelector('span:first-child');
         if (itemCountElement) {
@@ -218,19 +218,19 @@ function updateOrderSummary() {
     }
     
     if (summaryElements.shipping) {
-        summaryElements.shipping.textContent = `$${shipping.toFixed(2)}`;
+        summaryElements.shipping.textContent = `${shipping.toFixed(2)} ر.ع`;
     }
     
     if (summaryElements.subtotal) {
-        summaryElements.subtotal.textContent = `$${(subtotal + shipping).toFixed(2)}`;
+        summaryElements.subtotal.textContent = `${(subtotal + shipping).toFixed(2)} ر.ع`;
     }
     
     if (summaryElements.tax) {
-        summaryElements.tax.textContent = `$${tax.toFixed(2)}`;
+        summaryElements.tax.textContent = `${tax.toFixed(2)} ر.ع`;
     }
     
     if (summaryElements.total) {
-        summaryElements.total.textContent = `$${total.toFixed(2)}`;
+        summaryElements.total.textContent = `${total.toFixed(2)} ر.ع`;
     }
 }
 

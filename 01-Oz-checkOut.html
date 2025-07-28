@@ -14,10 +14,10 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     
-    <!-- links to arabic font almarai -->
+    <!-- Google Arabic Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Custom CSS files -->
     <link rel="stylesheet" href="Styles/shared/fonts-styles.css">
@@ -25,13 +25,35 @@
     <link rel="stylesheet" href="Styles/shared/Ozden-header-links.css">
     <link rel="stylesheet" href="Styles/pages/checkout/checkout-header.css">
     <link rel="stylesheet" href="Styles/pages/checkout/checkout.css">
+    
+    <!-- Custom Arabic button styling -->
+    <style>
+        /* Standardized Arabic button styling */
+        .btn-arabic {
+            font-family: 'Cairo', 'Almarai', 'Tajawal', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 0.875rem !important; /* 14px equivalent */
+            direction: rtl !important;
+            text-align: center !important;
+        }
+        
+        .btn-arabic.btn-lg {
+            font-size: 1.125rem !important; /* 18px equivalent */
+            font-weight: 600 !important;
+        }
+        
+        .btn-arabic.btn-sm {
+            font-size: 0.75rem !important; /* 12px equivalent */
+            font-weight: 500 !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Bootstrap Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="01-Oz-home.html">
-                <img src="images/icons/Ozdenlogo.png" alt="Ozden logo" height="40" class="d-inline-block align-text-top">
+                <img src="images/icons/Ozdenlogo.png" alt="Ozden logo" height="100" class="d-inline-block align-text-top">
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
