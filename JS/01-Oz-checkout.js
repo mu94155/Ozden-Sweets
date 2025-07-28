@@ -61,7 +61,7 @@ function displayCartItems() {
                 <i class="bi bi-cart-x display-1 text-muted"></i>
                 <h3 class="mt-3">العربة فارغة</h3>
                 <p class="text-muted">لا توجد منتجات في عربة التسوق</p>
-                <a href="01-Oz-products.html" class="btn btn-primary">تصفح المنتجات</a>
+                <a href="01-Oz-products.html" class="btn btn-primary btn-arabic">تصفح المنتجات</a>
             </div>
         `;
         return;
@@ -89,9 +89,9 @@ function displayCartItems() {
                                 </select>
                             </div>
                             <div class="col-md-2 text-center">
-                                <strong>${(item.price * item.quantity).toFixed(2)} ر.ع</strong>
+                                <strong>$${(item.price * item.quantity).toFixed(2)}</strong>
                                 <br>
-                                <small class="text-muted">${item.price.toFixed(2)}  ر.ع للوحدة</small>
+                                <small class="text-muted">$${item.price.toFixed(2)} each</small>
                             </div>
                             <div class="col-md-2 text-center">
                                 <button class="btn btn-outline-danger btn-sm remove-item" data-item-id="${item.id}">
@@ -208,7 +208,7 @@ function updateOrderSummary() {
     };
     
     if (summaryElements.items) {
-        summaryElements.items.textContent = `${subtotal.toFixed(2)}`;
+        summaryElements.items.textContent = `$${subtotal.toFixed(2)}`;
         // Update item count
         const itemCountElement = summaryElements.items.parentElement.querySelector('span:first-child');
         if (itemCountElement) {
@@ -218,19 +218,19 @@ function updateOrderSummary() {
     }
     
     if (summaryElements.shipping) {
-        summaryElements.shipping.textContent = `${shipping.toFixed(2)} ر.ع`;
+        summaryElements.shipping.textContent = `$${shipping.toFixed(2)}`;
     }
     
     if (summaryElements.subtotal) {
-        summaryElements.subtotal.textContent = `${(subtotal + shipping).toFixed(2)} ر.ع`;
+        summaryElements.subtotal.textContent = `$${(subtotal + shipping).toFixed(2)}`;
     }
     
     if (summaryElements.tax) {
-        summaryElements.tax.textContent = `${tax.toFixed(2)} ر.ع`;
+        summaryElements.tax.textContent = `$${tax.toFixed(2)}`;
     }
     
     if (summaryElements.total) {
-        summaryElements.total.textContent = `${total.toFixed(2)} ر.ع`;
+        summaryElements.total.textContent = `$${total.toFixed(2)}`;
     }
 }
 

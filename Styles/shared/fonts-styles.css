@@ -152,25 +152,6 @@ html {
   font-weight: 700;
 }
 
-/* Standardized Arabic button styling */
-.btn-arabic {
-  font-family: var(--arabic-font-primary) !important;
-  font-weight: 500 !important;
-  font-size: 0.875rem !important; /* 14px equivalent */
-  direction: rtl !important;
-  text-align: center !important;
-}
-
-.btn-arabic.btn-lg {
-  font-size: 1.125rem !important; /* 18px equivalent */
-  font-weight: 600 !important;
-}
-
-.btn-arabic.btn-sm {
-  font-size: 0.75rem !important; /* 12px equivalent */
-  font-weight: 500 !important;
-}
-
 body {
   font-family: 'Almarai', Arial, sans-serif; /* Default Arabic font */
 }
