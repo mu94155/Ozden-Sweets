@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة منتج جديد - أوزدن للحلويات</title>
+    
+    <!-- Google Arabic Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS files -->
+    <link rel="stylesheet" href="Styles/shared/fonts-styles.css">
+    <link rel="stylesheet" href="Styles/shared/Ozden-header.css">
+    <link rel="stylesheet" href="Styles/shared/Ozden-header-links.css">
+    
+    <!-- Custom Bootstrap overrides -->
+    <style>
+        /* Arabic Font Setup */
+        :root {
+            --arabic-font-primary: 'Cairo', 'Almarai', 'Tajawal', sans-serif;
+            --arabic-font-secondary: 'Noto Sans Arabic', 'Almarai', sans-serif;
+            --arabic-font-elegant: 'Amiri', 'Cairo', serif;
+        }
+        
+        /* Apply Arabic fonts to Arabic text elements */
+        [lang="ar"], .arabic-text {
+            font-family: var(--arabic-font-primary);
+        }
+        
+        /* Navigation Arabic text */
+        .navbar-nav .nav-link {
+            font-family: var(--arabic-font-primary);
+            font-weight: 500;
+        }
+        
+        /* Headings in Arabic */
+        .arabic-heading {
+            font-family: var(--arabic-font-elegant);
+            font-weight: 600;
+        }
+        
+        /* Better Arabic text rendering */
+        .arabic-content {
+            text-rendering: optimizeLegibility;
+            -webkit-font-feature-settings: "liga", "kern";
+            font-feature-settings: "liga", "kern";
+            direction: rtl;
+            text-align: right;
+        }
+        
+        /* Form styling */
+        .form-label {
+            font-family: var(--arabic-font-primary);
+            font-weight: 500;
+        }
+        
+        .form-control, .form-select {
+            font-family: var(--arabic-font-primary);
+            direction: rtl;
+            text-align: right;
+            max-width: 100%;
+        }
+        
+        .form-control::placeholder {
+            font-family: var(--arabic-font-primary);
+            opacity: 0.7;
+        }
+        
+        /* Standardized Arabic button styling */
+        .btn-arabic {
+            font-family: var(--arabic-font-primary) !important;
+            font-weight: 500 !important;
+            font-size: 0.875rem !important; /* 14px equivalent */
+            direction: rtl !important;
+            text-align: center !important;
+        }
+        
+        .btn-arabic.btn-lg {
+            font-size: 1.125rem !important; /* 18px equivalent */
+            font-weight: 600 !important;
+        }
+        
+        .btn-arabic.btn-sm {
+            font-size: 0.75rem !important; /* 12px equivalent */
+            font-weight: 500 !important;
+        }
+        
+        .image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .image-preview img {
+            max-width: 100%;
+            max-height: 150px;
+            border-radius: 4px;
+        }
+        
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .file-input-wrapper input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+        
+        .file-input-button {
+            display: inline-block;
+            padding: 8px 12px;
+            cursor: pointer;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #495057;
+            font-family: var(--arabic-font-primary);
+            width: 100%;
+            text-align: center;
+        }
+        
+        .file-input-button:hover {
+            background-color: #e9ecef;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+        
+        .required-field {
+            color: #dc3545;
+        }
+        
+        /* Fix layout and prevent horizontal scrolling */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+            position: relative;
+        }
+        
+        .container-fluid {
+            padding-left: 15px;
+            padding-right: 15px;
+            max-width: 100vw;
+        }
+        
+        .container {
+            position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Prevent any wide elements from causing overflow */
+        * {
+            box-sizing: border-box;
+        }
+        
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .col, .col-* {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        
+        /* Ensure form elements don't overflow */
+        
+        /* Fix image preview container */
+        
+        /* Ensure page loads properly centered */
+        body {
+            scroll-behavior: smooth;
+            transform: translateX(0); /* Force proper positioning */
+        }
+        
+        /* Fix any potential RTL layout issues */
+        main {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-container {
+                max-width: 100%;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            .container-fluid {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+        
+        /* Additional centering improvements */
+        
+        /* Center the main content better */
+        main.container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: calc(100vh - 200px);
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="01-Oz-home.html">
+                <img src="Images/Ozdenlogo.JPG" alt="Ozden logo" height="100" class="d-inline-block align-text-top">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-home.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-products.html">المنتجات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-AdminPanel.html">الادارة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="01-Oz-addProduct.html">إضافة منتج</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-checkOut.html">عربة المشتريات</a>
+                    </li>
+                </ul>
+                
+                <!-- Search form -->
+                <form class="d-flex me-3">
+                    <input class="form-control me-2" type="search" placeholder="بحث" aria-label="بحث">
+                    <button class="btn btn-outline-secondary" type="submit" title="بحث" aria-label="بحث">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                
+                <!-- Cart and Orders -->
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-outline-primary me-2" href="orders.html">
+                        <i class="bi bi-arrow-return-left"></i> الإرجاع والطلبات
+                    </a>
+                    <a class="btn btn-primary position-relative" href="01-Oz-checkOut.html">
+                        <i class="bi bi-cart"></i> السلة
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <div class="form-container">
+            <!-- Page Header -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="text-center">
+                        <h1 class="display-4 fw-bold text-primary mb-3 arabic-text">إضافة منتج جديد</h1>
+                        <p class="lead arabic-text">أضف منتجاً جديداً إلى مجموعة الحلويات</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Form -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="card-title mb-0 arabic-text">
+                                <i class="bi bi-plus-circle me-2"></i>
+                                تفاصيل المنتج الجديد
+                            </h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <form id="addProductForm" enctype="multipart/form-data">
+                                <div class="row g-4">
+                                    <!-- Product Name -->
+                                    <div class="col-md-6">
+                                        <label for="productName" class="form-label arabic-text">
+                                            اسم المنتج <span class="required-field">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="productName" name="productName" 
+                                               placeholder="أدخل اسم المنتج" required>
+                                        <div class="invalid-feedback arabic-text">
+                                            يرجى إدخال اسم المنتج
+                                        </div>
+                                    </div>
+
+                                    <!-- Product ID -->
+                                    <div class="col-md-6">
+                                        <label for="productId" class="form-label arabic-text">
+                                            معرف المنتج <span class="required-field">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="productId" name="productId" 
+                                               placeholder="معرف فريد للمنتج (بالإنجليزية)" required>
+                                        <div class="form-text arabic-text">يجب أن يكون المعرف فريداً وبدون مسافات</div>
+                                        <div class="invalid-feedback arabic-text">
+                                            يرجى إدخال معرف المنتج
+                                        </div>
+                                    </div>
+
+                                    <!-- Product Price -->
+                                    <div class="col-md-6">
+                                        <label for="productPrice" class="form-label arabic-text">
+                                            السعر (بالدولار) <span class="required-field">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="productPrice" name="productPrice" 
+                                                   step="0.01" min="0" placeholder="0.00" required>
+                                            <span class="input-group-text">$</span>
+                                        </div>
+                                        <div class="invalid-feedback arabic-text">
+                                            يرجى إدخال سعر صحيح
+                                        </div>
+                                    </div>
+
+                                    <!-- Product Category -->
+                                    <div class="col-md-6">
+                                        <label for="productCategory" class="form-label arabic-text">
+                                            الفئة <span class="required-field">*</span>
+                                        </label>
+                                        <select class="form-select" id="productCategory" name="productCategory" required>
+                                            <option value="">اختر الفئة</option>
+                                            <option value="حلويات">حلويات</option>
+                                            <option value="كيك">كيك</option>
+                                            <option value="كوكيز">كوكيز</option>
+                                            <option value="براونيز">براونيز</option>
+                                            <option value="تشيز كيك">تشيز كيك</option>
+                                            <option value="ماكرون">ماكرون</option>
+                                            <option value="معجنات">معجنات</option>
+                                            <option value="أخرى">أخرى</option>
+                                        </select>
+                                        <div class="invalid-feedback arabic-text">
+                                            يرجى اختيار فئة المنتج
+                                        </div>
+                                    </div>
+
+                                    <!-- Product Description -->
+                                    <div class="col-12">
+                                        <label for="productDescription" class="form-label arabic-text">
+                                            وصف المنتج <span class="required-field">*</span>
+                                        </label>
+                                        <textarea class="form-control" id="productDescription" name="productDescription" 
+                                                  rows="4" placeholder="أدخل وصفاً مفصلاً للمنتج" required></textarea>
+                                        <div class="invalid-feedback arabic-text">
+                                            يرجى إدخال وصف المنتج
+                                        </div>
+                                    </div>
+
+                                    <!-- Product Image -->
+                                    <div class="col-12">
+                                        <label for="productImage" class="form-label arabic-text">
+                                            صورة المنتج <span class="required-field">*</span>
+                                        </label>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="file-input-wrapper">
+                                                    <input type="file" id="productImage" name="productImage" 
+                                                           accept="image/*" required>
+                                                    <label for="productImage" class="file-input-button">
+                                                        <i class="bi bi-cloud-upload me-2"></i>
+                                                        اختر صورة المنتج
+                                                    </label>
+                                                </div>
+                                                <div class="form-text arabic-text">
+                                                    الملفات المدعومة: JPG, PNG, GIF (حد أقصى 5MB)
+                                                </div>
+                                                <div class="invalid-feedback arabic-text">
+                                                    يرجى اختيار صورة للمنتج
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="image-preview" id="imagePreview">
+                                                    <i class="bi bi-image fs-1 text-muted"></i>
+                                                    <p class="text-muted mt-2 arabic-text">معاينة الصورة</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Additional Options -->
+                                    <div class="col-12">
+                                        <hr class="my-4">
+                                        <h5 class="arabic-text mb-3">خيارات إضافية</h5>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="isFeatured" name="isFeatured">
+                                                    <label class="form-check-label arabic-text" for="isFeatured">
+                                                        منتج مميز
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="isAvailable" name="isAvailable" checked>
+                                                    <label class="form-check-label arabic-text" for="isAvailable">
+                                                        متوفر للطلب
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Form Actions -->
+                                    <div class="col-12">
+                                        <hr class="my-4">
+                                        <div class="d-flex gap-3 justify-content-center">
+                                            <button type="submit" class="btn btn-primary btn-lg btn-arabic">
+                                                <i class="bi bi-check-circle me-2"></i>
+                                                إضافة المنتج
+                                            </button>
+                                            <button type="reset" class="btn btn-outline-secondary btn-lg btn-arabic">
+                                                <i class="bi bi-arrow-clockwise me-2"></i>
+                                                إعادة تعيين
+                                            </button>
+                                            <a href="01-Oz-AdminPanel.html" class="btn btn-outline-danger btn-lg btn-arabic">
+                                                <i class="bi bi-x-circle me-2"></i>
+                                                إلغاء
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success/Error Messages -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div id="messageContainer"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Common functionality -->
+    <script src="JS/common.js"></script>
+    <!-- Add Product Form JavaScript -->
+    <script src="JS/01-Oz-addProduct.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تشخيص المشاكل - Diagnostic Page</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        .arabic-text { direction: rtl; text-align: right; }
+        .log-box { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; max-height: 400px; overflow-y: auto; }
+        .error { color: #dc3545; }
+        .success { color: #198754; }
+        .warning { color: #ffc107; }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center arabic-text">صفحة تشخيص المشاكل</h1>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>اختبار الملفات - File Tests</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="fileTests">
+                            <p>جاري فحص الملفات...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>اختبار الصور - Image Tests</h5>
+                    </div>
+                    <div class="card-body">
+                        <label for="testImage" class="form-label">اختر صورة للاختبار:</label>
+                        <input type="file" id="testImage" class="form-control mb-3" accept="image/*">
+                        <div id="imageResult"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>سجل الأحداث - Console Log</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="consoleLog" class="log-box"></div>
+                        <button class="btn btn-secondary btn-sm mt-2" onclick="clearLog()">مسح السجل</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>روابط التصفح - Navigation Links</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="01-Oz-home.html" class="btn btn-primary">الرئيسية</a>
+                            <a href="01-Oz-addProduct.html" class="btn btn-warning">إضافة منتج (الأصلي)</a>
+                            <a href="01-Oz-addProduct-simple.html" class="btn btn-success">إضافة منتج (مبسط)</a>
+                            <a href="test-addProduct.html" class="btn btn-info">صفحة الاختبار</a>
+                            <a href="01-Oz-AdminPanel.html" class="btn btn-secondary">لوحة الإدارة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const log = document.getElementById('consoleLog');
+        
+        function addLog(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const div = document.createElement('div');
+            div.className = type;
+            div.innerHTML = `[${timestamp}] ${message}`;
+            log.appendChild(div);
+            log.scrollTop = log.scrollHeight;
+        }
+        
+        function clearLog() {
+            log.innerHTML = '';
+        }
+        
+        // Override console methods to capture logs
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        console.log = function(...args) {
+            addLog(args.join(' '), 'success');
+            originalLog.apply(console, args);
+        };
+        
+        console.error = function(...args) {
+            addLog('ERROR: ' + args.join(' '), 'error');
+            originalError.apply(console, args);
+        };
+        
+        console.warn = function(...args) {
+            addLog('WARNING: ' + args.join(' '), 'warning');
+            originalWarn.apply(console, args);
+        };
+        
+        // Test files
+        function testFiles() {
+            const files = [
+                'JS/common.js',
+                'JS/01-Oz-addProduct.js',
+                'Images/Ozdenlogo.JPG',
+                '01-Oz-addProduct.html',
+                '01-Oz-home.html'
+            ];
+            
+            const fileTestsDiv = document.getElementById('fileTests');
+            fileTestsDiv.innerHTML = '';
+            
+            files.forEach(file => {
+                fetch(file)
+                    .then(response => {
+                        const status = response.ok ? 'success' : 'error';
+                        const message = response.ok ? '✅ موجود' : '❌ غير موجود';
+                        fileTestsDiv.innerHTML += `<div class="${status}">${file}: ${message}</div>`;
+                        addLog(`File test: ${file} - ${response.status}`);
+                    })
+                    .catch(error => {
+                        fileTestsDiv.innerHTML += `<div class="error">${file}: ❌ خطأ في التحميل</div>`;
+                        addLog(`File test error: ${file} - ${error.message}`, 'error');
+                    });
+            });
+        }
+        
+        // Test image upload
+        document.getElementById('testImage').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const resultDiv = document.getElementById('imageResult');
+            
+            if (file) {
+                addLog(`Image selected: ${file.name}, Size: ${file.size}, Type: ${file.type}`);
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    resultDiv.innerHTML = `
+                        <div class="success">✅ تم تحميل الصورة بنجاح</div>
+                        <img src="${e.target.result}" style="max-width: 100px; max-height: 100px;" class="mt-2">
+                        <div><small>اسم الملف: ${file.name}</small></div>
+                        <div><small>الحجم: ${(file.size / 1024).toFixed(2)} KB</small></div>
+                    `;
+                    addLog('Image loaded successfully', 'success');
+                };
+                
+                reader.onerror = function() {
+                    resultDiv.innerHTML = '<div class="error">❌ فشل في تحميل الصورة</div>';
+                    addLog('Image load failed', 'error');
+                };
+                
+                reader.readAsDataURL(file);
+            } else {
+                resultDiv.innerHTML = '';
+                addLog('No image selected');
+            }
+        });
+        
+        // Check local storage
+        function checkLocalStorage() {
+            try {
+                const products = localStorage.getItem('products');
+                if (products) {
+                    const parsedProducts = JSON.parse(products);
+                    addLog(`LocalStorage: Found ${parsedProducts.length} products`, 'success');
+                } else {
+                    addLog('LocalStorage: No products found');
+                }
+            } catch (error) {
+                addLog(`LocalStorage error: ${error.message}`, 'error');
+            }
+        }
+        
+        // Check if scripts are loading
+        function checkScripts() {
+            addLog('Checking if scripts are accessible...');
+            
+            // Check if Bootstrap is loaded
+            if (typeof bootstrap !== 'undefined') {
+                addLog('Bootstrap loaded successfully ✅', 'success');
+            } else {
+                addLog('Bootstrap not loaded ❌', 'error');
+            }
+            
+            // Check jQuery if needed
+            if (typeof $ !== 'undefined') {
+                addLog('jQuery loaded ✅', 'success');
+            } else {
+                addLog('jQuery not loaded (this is normal)');
+            }
+        }
+        
+        // Run tests on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            addLog('Diagnostic page loaded', 'success');
+            testFiles();
+            checkLocalStorage();
+            checkScripts();
+        });
+        
+        // Catch all errors
+        window.addEventListener('error', function(e) {
+            addLog(`Global error: ${e.message} at ${e.filename}:${e.lineno}`, 'error');
+        });
+        
+        addLog('Diagnostic script initialized');
+    </script>
+</body>
+</html>

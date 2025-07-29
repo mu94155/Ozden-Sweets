@@ -95,6 +95,43 @@
             font-size: 0.75rem !important; /* 12px equivalent */
             font-weight: 500 !important;
         }
+        
+        /* Center content while maintaining full-width sections */
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        /* Ensure all containers are centered with consistent max-width */
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        /* Better centering for Arabic content */
+        main {
+            text-align: center;
+        }
+        
+        .hero-content {
+            text-align: right;
+        }
+        
+        .card-body {
+            text-align: right;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -102,7 +139,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="01-Oz-home.html">
-                <img src="images/icons/Ozdenlogo.png" alt="Ozden logo" height="100" class="d-inline-block align-text-top">
+                <img src="Images/Ozdenlogo.JPG" alt="Ozden logo" height="100" class="d-inline-block align-text-top">
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,6 +156,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="01-Oz-AdminPanel.html">الادارة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="01-Oz-addProduct.html">إضافة منتج</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="01-Oz-checkOut.html">عربة المشتريات</a>
@@ -148,7 +188,7 @@
             </div>
         </div>
     </nav>
-    <main lang="en" dir="ltr" class="container-fluid">
+    <main lang="ar" dir="rtl" class="container-fluid">
         <!-- Hero Section -->
         <section class="hero-section py-5 bg-light">
             <div class="container">
