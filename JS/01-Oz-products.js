@@ -33,7 +33,7 @@ function displayProducts(productsToShow) {
         const price12 = (product.price + (product.price * 0.25)).toFixed(2);
         
         productsHTML += `
-            <div class="col-lg-12 col-md-6 col-sm-12 mb-4">
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-img-top-container">
                         <img class="card-img-top product-card-image" src="${product.image}" alt="${product.name}">
