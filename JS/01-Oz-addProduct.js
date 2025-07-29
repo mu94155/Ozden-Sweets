@@ -492,22 +492,44 @@ class ProductManager {
         const instructions = `
             <div class="alert alert-info alert-dismissible fade show" role="alert">
                 <i class="bi bi-info-circle me-2"></i>
-                <strong class="arabic-text">تعليمات حفظ الصورة:</strong>
+                <strong class="arabic-text">تعليمات حفظ الصورة في مجلد Images:</strong>
                 <div class="mt-2 arabic-text">
-                    <p class="mb-1">لإكمال إضافة المنتج، يرجى حفظ صورة المنتج:</p>
-                    <ol class="mb-2">
-                        <li>انقر على زر "تحميل الصورة" أدناه</li>
-                        <li>احفظ الصورة في مجلد: <code>Images/</code></li>
-                        <li>تأكد من اسم الملف: <code>${newFileName}</code></li>
-                    </ol>
-                    <div class="d-flex gap-2 mt-2">
-                        <button type="button" class="btn btn-sm btn-success" onclick="window.productManager.downloadProcessedImage('${newFileName}')">
+                    <p class="mb-2">
+                        <strong>لا يمكن للمتصفح حفظ الصور مباشرة في مجلد المشروع لأسباب أمنية.</strong><br>
+                        اختر إحدى الطرق التالية لحفظ الصورة:
+                    </p>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-primary">📋 الطريقة السهلة (موصى بها):</h6>
+                            <ol class="mb-2">
+                                <li>اضغط على زر "تحميل الصورة"</li>
+                                <li>اضغط على "أداة إدارة الصور"</li>
+                                <li>الأداة ستنقل الصورة تلقائياً لمجلد Images</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-secondary">📁 الطريقة اليدوية:</h6>
+                            <ol class="mb-2">
+                                <li>اضغط على زر "تحميل الصورة"</li>
+                                <li>اقطع الصورة من مجلد التحميلات</li>
+                                <li>الصقها في مجلد: <code>Images/</code></li>
+                                <li>تأكد من اسم الملف: <code>${newFileName}</code></li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-2 mt-3 flex-wrap">
+                        <button type="button" class="btn btn-success" onclick="window.productManager.downloadProcessedImage('${newFileName}')">
                             <i class="bi bi-download me-1"></i>تحميل الصورة
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="navigator.clipboard.writeText('${newFileName}').then(() => alert('تم نسخ اسم الملف!'))">
+                        <button type="button" class="btn btn-primary" onclick="window.productManager.openImageManager()">
+                            <i class="bi bi-tools me-1"></i>أداة إدارة الصور
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" onclick="navigator.clipboard.writeText('${newFileName}').then(() => alert('تم نسخ اسم الملف!'))">
                             <i class="bi bi-clipboard me-1"></i>نسخ اسم الملف
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.productManager.openImagesFolder()">
+                        <button type="button" class="btn btn-outline-secondary" onclick="window.productManager.openImagesFolder()">
                             <i class="bi bi-folder2-open me-1"></i>فتح مجلد الصور
                         </button>
                     </div>
@@ -558,8 +580,55 @@ class ProductManager {
     }
 
     openImagesFolder() {
-        // This will show instructions since we can't directly open folders
+        // This will show instructions since we can't directly open folders from web
         this.showMessage('info', 'مجلد الصور', 'انتقل إلى مجلد المشروع ثم افتح مجلد Images/ وضع الصورة هناك.');
+    }
+
+    openImageManager() {
+        try {
+            // Try to open the batch file using Windows shell
+            if (window.location.protocol === 'file:') {
+                // We're in a local file, try to open the batch script
+                const batchPath = 'manage_images.bat';
+                
+                // Show instructions with manual option
+                const instructions = `
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <h6 class="arabic-text">
+                            <i class="bi bi-tools me-2"></i>أداة إدارة الصور
+                        </h6>
+                        <div class="arabic-text">
+                            <p>لاستخدام أداة إدارة الصور التلقائية:</p>
+                            <ol>
+                                <li>انتقل إلى مجلد المشروع في Windows Explorer</li>
+                                <li>ابحث عن ملف <code>manage_images.bat</code></li>
+                                <li>اضغط عليه مرتين لتشغيله</li>
+                                <li>اختر الخيار رقم 1 لنقل أحدث صورة من التحميلات</li>
+                            </ol>
+                            <p class="mt-2">
+                                <strong>أو استخدم الطريقة اليدوية:</strong> اقطع الصورة من مجلد التحميلات والصقها في مجلد Images.
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                `;
+                
+                // Add instructions to message container
+                const existingAlert = this.messageContainer.querySelector('.alert');
+                if (existingAlert) {
+                    existingAlert.insertAdjacentHTML('beforebegin', instructions);
+                } else {
+                    this.messageContainer.innerHTML = instructions + this.messageContainer.innerHTML;
+                }
+            } else {
+                this.showMessage('info', 'أداة إدارة الصور', 
+                    'استخدم الطريقة اليدوية: اقطع الصورة من مجلد التحميلات والصقها في مجلد Images.');
+            }
+        } catch (error) {
+            console.error('Error opening image manager:', error);
+            this.showMessage('info', 'أداة إدارة الصور', 
+                'استخدم الطريقة اليدوية: اقطع الصورة من مجلد التحميلات والصقها في مجلد Images.');
+        }
     }
 
     previewDownloadImage(originalName, newFileName, dataURL) {
